@@ -9,53 +9,41 @@ import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+// class Form extends Component {
+//   //Setting the state of the componenet
+//   state = {
+//     name: "",
+//     subject: "",
+//     assignment: "",
+//     dueDate: ""
+//   };
 
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      <Box p={3}>{children}</Box>
-    </Typography>
-  );
-}
+//   handleInputChange = event => {
+//     let value = event.target.value;
+//     let name = event.target.name;
 
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`
-  };
-}
+//     this.setState({
+//       [name]: value
+//     });
+//   };
+
+//   handleFormSubmit = event => {
+//     event.preventDefault();
+//     if (!this.state.name || !this.state.subject || !this.state.assignment || !this.state.dueDate) {
+//       alert("Fill out the form entriely before submitting");
+//     } else {
+//       alert(`Hey ${this,state.name} make sure you get your ${this.state.subject} homework done by ${this.state.dueDate}`);
+//     }
+//     this.setState({
+//       name: "",
+//       subject: "",
+//       assignment: "",
+//       dueDate: ""
+//     });
+//   };
 
 const School = props => (
   <div>
-    <Tabs
-      orientation="vertical"
-      variant="scrollable"
-      aria-label="Vertical tabs example"
-    >
-      <Tab label="Item One" {...a11yProps(0)} />
-      <Tab label="Item Two" {...a11yProps(1)} />
-      <Tab label="Item Three" {...a11yProps(2)} />
-      <Tab label="Item Four" {...a11yProps(3)} />
-      <Tab label="Item Five" {...a11yProps(4)} />
-      <Tab label="Item Six" {...a11yProps(5)} />
-      <Tab label="Item Seven" {...a11yProps(6)} />
-    </Tabs>
-    <TabPanel index={0}>Item One</TabPanel>
-    <TabPanel index={1}>Item Two</TabPanel>
-    <TabPanel index={2}>Item Three</TabPanel>
-    <TabPanel index={3}>Item Four</TabPanel>
-    <TabPanel index={4}>Item Five</TabPanel>
-    <TabPanel index={5}>Item Six</TabPanel>
-    <TabPanel index={6}>Item Seven</TabPanel>
-
     <Grid container spacing={3}>
       <Grid item xs={6} sm={3}>
         <Paper style={{ padding: 10, marginTop: 10, marginBottom: 10 }}>
@@ -371,4 +359,5 @@ const School = props => (
     </Grid>
   </div>
 );
+
 export default School;
