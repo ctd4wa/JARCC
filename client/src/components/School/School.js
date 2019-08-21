@@ -104,7 +104,11 @@ class School extends Component {
               color="primary"
               aria-label="outlined primary button group"
             >
-              <Button label="Post" type="submit" />
+              <Button
+                onClick={() => {
+                  console.log(this.state.name);
+                }}
+              />
               <Button>Done</Button>
               <Button>Help</Button>
             </ButtonGroup>
