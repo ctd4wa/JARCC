@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const {Schema} = mongoose;
 
 //Create Schema and Model ("school").
 // `email` must be of type String
@@ -9,7 +9,7 @@ const Schema = mongoose.Schema;
 // `date` must be of type Date. The default value is 
 // the current date.
 
-const schoolSchema = new Schema ({
+const schoolsSchema = new Schema ({
   email: {
     type: String,
     unique: true,
@@ -28,7 +28,7 @@ const schoolSchema = new Schema ({
                }]
 });
 
-const school = mongoose.model('school', schoolSchema);
+const schools = mongoose.model('schools', schoolsSchema);
 
-module.exports = school;
+module.exports = schools;
 

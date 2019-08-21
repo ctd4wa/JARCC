@@ -1,35 +1,35 @@
-const db = require("../models");
+const {school} = require("../models");
 
 // Defining methods for the schoolsController
 module.exports = {
   findAll: function(req, res) {
-    db.school
+    school
       .find(req.query)
       .sort({ name: -1})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    db.school
+    school
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.school
+    school
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.school
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+    school
+      .findOneAndUpdate({ email: req.params.email }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.school
-      .findById({ _id: req.params.id })
+    school
+      .findById({ email: req.params.email })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
