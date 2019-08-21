@@ -1,16 +1,37 @@
-const router = require("express").Router();
-const usersController = require("../../controllers/usersController");
+const db = require("../models");
 
-// Matches with "/api/users"
-router.route("/")
-  .get(usersController.findAll)
-  .post(usersController.create);
-
-// Matches with "/api/users/:email"
-router
-  .route("/:email")
-  .get(usersController.findById)
-  .put(usersController.update)
-  .delete(usersController.remove);
-
-module.exports = router;
+// Defining methods for the usersController
+module.exports = {
+  findAll: function(req, res) {
+    db.users
+      .find(req.query)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findById: function(req, res) {
+    db.users
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  create: function(req, res) {
+    db.user
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  update: function(req, res) {
+    db.user
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  remove: function(req, res) {
+    db.users
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
+};
