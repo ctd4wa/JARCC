@@ -5,6 +5,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import FormControl from "@material-ui/core/FormControl";
+import axios from "axios";
 
 class School extends Component {
   //Setting the state of the componenet
@@ -14,6 +15,9 @@ class School extends Component {
     subject: "",
     assignment: "",
     dueDate: ""
+  };
+  getSchool = id => {
+    return axios.post("/:email");
   };
 
   handleInputChange = event => {
@@ -27,7 +31,6 @@ class School extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state.name);
     if (
       this.state.name.length < 0 ||
       this.state.subject.length < 0 ||
@@ -35,9 +38,8 @@ class School extends Component {
       this.state.dueDate.length < 0
     ) {
       alert("Fill out the form entriely before submitting");
-      console.log(this.state.name);
     } else {
-      console.log(this.state.name);
+      this.getSchool();
       alert(
         `Hey ${this.state.name} make sure you get your ${
           this.state.subject
@@ -54,8 +56,8 @@ class School extends Component {
 
   Form = props => (
     <FormControl onSubmit={this.handleFormSubmit}>
-      <Grid container spacing={3}>
-        <Grid item xs={6} sm={3}>
+      <Grid container spacing={1}>
+        <Grid item xs={12} style={{ align: center }}>
           <Paper style={{ padding: 10, marginTop: 10, marginBottom: 10 }}>
             <TextField
               className="form"
@@ -72,7 +74,7 @@ class School extends Component {
               id="standard-name"
               name="subject"
               value={this.state.subject}
-              label="Name"
+              label="Subject"
               onChange={this.handleInputChange}
               rowsMax="4"
               margin="normal"
@@ -104,127 +106,8 @@ class School extends Component {
               color="primary"
               aria-label="outlined primary button group"
             >
-              <Button
-                onClick={() => {
-                  console.log(this.state.name);
-                }}
-              />
-              <Button>Done</Button>
-              <Button>Help</Button>
-            </ButtonGroup>
-          </Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper style={{ padding: 10, marginTop: 10, marginBottom: 10 }}>
-            <TextField id="standard-name" label="Name" margin="normal" />
+              <Button onClick={this.handleFormSubmit}>Post</Button>
 
-            <br />
-            <TextField
-              id="standard-name"
-              label="Subject"
-              rowsMax="4"
-              margin="normal"
-            />
-
-            <br />
-            <TextField
-              id="standard-name"
-              label="Assignment"
-              multiline
-              rowsMax="4"
-              margin="normal"
-            />
-            <br />
-            <TextField
-              id="standard-name"
-              label="Due Date"
-              rowsMax="4"
-              margin="normal"
-            />
-            <br />
-            <ButtonGroup
-              color="primary"
-              aria-label="outlined primary button group"
-            >
-              <Button>Post</Button>
-              <Button>Done</Button>
-              <Button>Help</Button>
-            </ButtonGroup>
-          </Paper>
-        </Grid>
-
-        <Grid item xs={6} sm={3}>
-          <Paper style={{ padding: 10, marginTop: 10, marginBottom: 10 }}>
-            <TextField id="standard-name" label="Name" margin="normal" />
-
-            <br />
-            <TextField
-              id="standard-name"
-              label="Subject"
-              rowsMax="4"
-              margin="normal"
-            />
-
-            <br />
-            <TextField
-              id="standard-name"
-              label="Assignment"
-              multiline
-              rowsMax="4"
-              margin="normal"
-            />
-            <br />
-            <TextField
-              id="standard-name"
-              label="Due Date"
-              rowsMax="4"
-              margin="normal"
-            />
-            <br />
-            <ButtonGroup
-              color="primary"
-              aria-label="outlined primary button group"
-            >
-              <Button>Post</Button>
-              <Button>Done</Button>
-              <Button>Help</Button>
-            </ButtonGroup>
-          </Paper>
-        </Grid>
-
-        <Grid item xs={6} sm={3}>
-          <Paper style={{ padding: 10, marginTop: 10, marginBottom: 10 }}>
-            <TextField id="standard-name" label="Name" margin="normal" />
-
-            <br />
-            <TextField
-              id="standard-name"
-              label="Subject"
-              rowsMax="4"
-              margin="normal"
-            />
-
-            <br />
-            <TextField
-              id="standard-name"
-              label="Assignment"
-              multiline
-              rowsMax="4"
-              margin="normal"
-            />
-            <br />
-            <TextField
-              id="standard-name"
-              label="Due Date"
-              rowsMax="4"
-              margin="normal"
-            />
-            <br />
-            <ButtonGroup
-              color="primary"
-              aria-label="outlined primary button group"
-            >
-              <Button>Post</Button>
               <Button>Done</Button>
               <Button>Help</Button>
             </ButtonGroup>
