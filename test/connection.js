@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/familcircle');
+mongoose.connect('mongodb://localhost/familycircle');
 
 mongoose.connection.once('open', function() {
    console.log('Connection has been made, you are connected to familyCircle');

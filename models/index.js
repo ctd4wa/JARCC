@@ -2,5 +2,5 @@
 
 module.exports = {
     user: require("./users"),
-    school: require("./schools")
+    homework: require("./homework")
   };
