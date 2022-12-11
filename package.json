@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/ctd4wa/JARCC#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongoose": "^5.6.9",
     "if-env": "^1.0.4",
     "morgan": "^1.9.1"
